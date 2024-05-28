@@ -2,16 +2,16 @@ import { useState } from 'react'
 import Navbar from './components/navbar/navbar.jsx';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-
-    <div className="App">
+import MovieList from './components/main/movieList';
+  function App() {
+    return (
+      <div className="App">
         <Navbar />
-    </div>
+        {/* <h1>Popular Movies</h1> */}
+        <MovieList />
+      </div>
+    );
+  }
 
-  )
-}
 
 export default App
