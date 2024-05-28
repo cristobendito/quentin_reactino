@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './navbar.css';
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -14,10 +16,22 @@ const Navbar = () => {
     console.log('Searching for:', searchQuery);
   };
 
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Check initial screen size
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="navbar-title">QUENTIN FILM</div>
-      <div className="navbar-links">
+      <div className={`navbar-links ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}>
         <a href="/favorites" className="navbar-link">Favoritos</a>
         <button className="navbar-button">Login/Registro</button>
         <div className="navbar-dropdown">
@@ -40,6 +54,9 @@ const Navbar = () => {
           <button type="submit" className="navbar-search-button">Buscar</button>
         </form>
       </div>
+      <button className="navbar-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
+        &#9776;
+      </button>
     </nav>
   );
 };
