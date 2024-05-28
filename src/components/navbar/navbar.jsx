@@ -37,9 +37,63 @@ const Navbar = () => {
         <div className="navbar-dropdown">
           <button className="navbar-button">Categorías</button>
           <div className="dropdown-content">
-            <a href="/category/action">Acción</a>
-            <a href="/category/comedy">Comedia</a>
-            <a href="/category/drama">Drama</a>
+            <a href="/category/action">
+              <i className="fas fa-fist-raised"></i> Action
+            </a>
+            <a href="/category/adventure">
+              <i className="fas fa-hiking"></i> Adventure
+            </a>
+            <a href="/category/animation">
+              <i className="fas fa-film"></i> Animation
+            </a>
+            <a href="/category/comedy">
+              <i className="fas fa-laugh"></i> Comedy
+            </a>
+            <a href="/category/crime">
+              <i className="fas fa-bomb"></i> Crime
+            </a>
+            <a href="/category/documentary">
+              <i className="fas fa-book"></i> Documentary
+            </a>
+            <a href="/category/drama">
+              <i className="fas fa-theater-masks"></i> Drama
+            </a>
+            <a href="/category/family">
+              <i className="fas fa-users"></i> Family
+            </a>
+            <a href="/category/fantasy">
+              <i className="fas fa-dragon"></i> Fantasy
+            </a>
+            <a href="/category/history">
+              <i className="fas fa-landmark"></i> History
+            </a>
+            <a href="/category/horror">
+              <i className="fas fa-ghost"></i> Horror
+            </a>
+            <a href="/category/music">
+              <i className="fas fa-music"></i> Music
+            </a>
+            <a href="/category/mystery">
+              <i className="fas fa-search"></i> Mystery
+            </a>
+            <a href="/category/romance">
+              <i className="fas fa-heart"></i> Romance
+            </a>
+            <a href="/category/science-fiction">
+              <i className="fas fa-rocket"></i> Science Fiction
+            </a>
+            <a href="/category/tv-movie">
+              <i className="fas fa-tv"></i> TV Movie
+            </a>
+            <a href="/category/thriller">
+              <i className="fas fa-user-secret"></i> Thriller
+            </a>
+            <a href="/category/war">
+              <i className="fas fa-bomb"></i> War
+            </a>
+            <a href="/category/western">
+              <i className="fas fa-hat-cowboy"></i> Western
+            </a>
             {/* Añade más categorías según sea necesario */}
           </div>
         </div>

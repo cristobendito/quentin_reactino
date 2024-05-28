@@ -1,4 +1,8 @@
 /* Navbar.css */
+:root {
+  --primary-color: #333;/* Color primario */
+  --secundary-color: rgb(47, 114, 41); /* Color secundario */
+}
 
 body {
   margin: 0;
@@ -31,13 +35,18 @@ body {
 }
 
 .navbar-link {
+  background-color: #555;
   color: white;
-  text-decoration: none;
+  border: none;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
   margin: 0 1rem;
+  border-radius: 8px;
 }
 
 .navbar-link:hover {
-  text-decoration: underline;
+  background-color: #777;
+  color: white;
 }
 
 .navbar-button {
@@ -62,20 +71,45 @@ body {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 8px 8px 0 0;
 }
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
 
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  display: flex;
+  justify-content: space-around;
 }
 
 .dropdown-content a:hover {
+  border-radius: 8px 8px 0 0;
   background-color: #f1f1f1;
+  font-size: 1.1rem;
+  animation: shake 0.5s ease-in-out;
+}
+
+.dropdown-content a i {
+  color: var(--secundary-color);
+  font-size: 1.5rem;
+  transition: transform 0.5s ease;
+}
+
+.dropdown-content a i:hover {
+  transform: rotate(360deg);
+  font-size: 1.7rem;
 }
 
 .navbar-dropdown:hover .dropdown-content {
@@ -86,7 +120,6 @@ body {
   display: flex;
   align-items: center;
   margin-right: 2rem;
-  margin-bottom: 1rem;
 }
 
 .navbar-search-input {
@@ -145,6 +178,10 @@ body {
     display: block;
   }
 
+  .navbar-search  {
+    margin-bottom: 1rem;
+  }
+
   .navbar-link,
   .navbar-button,
   .navbar-dropdown {
@@ -164,4 +201,5 @@ body {
   .dropdown-content a:hover {
     background-color: #444;
   }
+
 }
