@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 
-src/apiKey.js
+src/services/apiKey.js
 
 node_modules
 dist

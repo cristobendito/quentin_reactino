@@ -1,21 +1,21 @@
+import { useState } from 'react'
+import Navbar from './components/navbar/navbar.jsx';
+import './App.css'
 import React, { useState } from 'react';
 import './App.css';
 import Footer from './components/footer/footer';  
 
-function App() {
-  const [count, setCount] = useState(0);
+import MovieList from './components/main/movieList';
+  function App() {
+    return (
+      <div className="App">
+        <Navbar />
+        {/* <h1>Popular Movies</h1> */}
+        <MovieList />
+        <Footer />
+      </div>
+    );
+  }
 
-  return (
-    <div className="App">
-      <nav className="navbar">
-        <h1>Navbar</h1>
-      </nav>
-      <main className="main-content">
-        <h2>Contenido Principal</h2>
-      </main>
-      <Footer />
-    </div>
-  );
-}
 
 export default App;
