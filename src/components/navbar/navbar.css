@@ -2,6 +2,7 @@
 :root {
   --primary-color: #333;/* Color primario */
   --secundary-color: rgb(47, 114, 41); /* Color secundario */
+  --terciary-color: #e7c91f;
 }
 
 body {
@@ -102,7 +103,7 @@ body {
 }
 
 .dropdown-content a i {
-  color: var(--secundary-color);
+  color: var(--terciary-color);
   font-size: 1.5rem;
   transition: transform 0.5s ease;
 }
