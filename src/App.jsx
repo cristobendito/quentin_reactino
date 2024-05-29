@@ -7,8 +7,7 @@ import MovieList from './components/main/movieList';
   function App() {
     return (
       <div className="App">
-        <Navbar />
-        {/* <h1>Popular Movies</h1> */}
+        <Navbar />git
         <MovieList />
         <Footer />
       </div>

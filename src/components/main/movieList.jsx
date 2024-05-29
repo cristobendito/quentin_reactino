@@ -1,43 +1,23 @@
-// import MovieCard from './MovieCard';
-
-// function MovieList({ movies, genres, onFavorite }) {
-//   return (
-//     <div id="movies-container">
-//       {movies.length > 0 
-//         ? movies.map(movie => (
-//             <MovieCard 
-//               key={movie.id} 
-//               movie={movie} 
-//               genres={genres} 
-//               onFavorite={onFavorite} 
-//             />
-//           ))
-//         : <p>No movies found.</p>
-//       }
-//     </div>
-//   );
-// }
-
-// export default MovieList;
-
-
 import { useEffect, useState } from 'react';
-import  {fetchPopularMovies}  from '../../services/api';
+import { fetchPopularMovies, fetchGenres } from '../../services/api';
 import MovieCard from './movieCard';
 import './movieList.css';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await fetchPopularMovies();
-        setMovies(data);
+        const movieData = await fetchPopularMovies();
+        const genreData = await fetchGenres();
+        setMovies(movieData);
+        setGenres(genreData);
       } catch (error) {
-        console.error('Error fetching movies:', error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -57,7 +37,7 @@ const MovieList = () => {
   return (
     <div className="movies-container">
       {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
+        <MovieCard key={movie.id} movie={movie} genres={genres} />
       ))}
     </div>
   );
