@@ -1,4 +1,6 @@
+
 .movie-card {
+    width: calc(25% - 20px);
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -9,7 +11,7 @@
   
   .movie-card img {
     width: 100%;
-    height: auto; 
+    height: auto;
     border-radius: 5px;
   }
   
@@ -22,3 +24,4 @@
     margin-top: 5px;
     font-size: 14px;
   }
+  
