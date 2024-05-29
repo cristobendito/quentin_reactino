@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './modal';
-import FavoriteButton from './favoriteButton';
+import ActionButton from './actionButton';
 import { fetchMovieVideos } from '../../services/api';
 import './movieCard.css';
 
@@ -36,8 +36,9 @@ const MovieCard = ({ movie, genres }) => {
       />
       <h2>{movie.title}</h2>
       <p>{genreNames}</p>
-      <button onClick={toggleModal}>More Info</button>
-      <FavoriteButton onFavorite={handleFavorite} />
+      <ActionButton label="Mas info" onClick={toggleModal} className="info-button" />
+      <ActionButton label="Add to Favorites" onClick={handleFavorite} className="favorite-button" />
+
 
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <h2>{movie.title}</h2>

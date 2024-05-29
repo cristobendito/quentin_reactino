@@ -1,0 +1,38 @@
+/* ActionButton.css */
+.action-button {
+    background-color: hsl(59, 98%, 49%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+  }
+  
+  .action-button.info-button {
+    background-color: #28292a;
+    color:  hsl(59, 98%, 49%);
+  }
+  
+  .action-button.favorite-button {
+    background-color: hsl(59, 98%, 49%);
+    color:  #28292a;
+  }
+  
+
+  .action-button.info-button:hover {
+    background-color: hsl(59, 98%, 49%);
+    color:  #28292a;
+  }
+  
+  .action-button.favorite-button:hover {
+    background-color: #28292a;
+    color:  hsl(59, 98%, 49%);
+}
+  
+  
+  .action-button:hover {
+    opacity: 0.8;
+  }
+  
