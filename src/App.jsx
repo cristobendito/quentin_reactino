@@ -1,4 +1,3 @@
-
 import Navbar from './components/navbar/navbar.jsx';
 import React, { useState } from 'react';
 import './App.css';
