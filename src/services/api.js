@@ -1,19 +1,6 @@
 import axios from "axios";
 import {APIKEY} from "./apiKey";
 
-// Axios proporciona las siguientes funcionalidades:
-
-// - Envío de XMLHttpRequest desde el navegador.
-// - Envío de solicitudes HTTP desde Node.js.
-// - Soporte para la API de Promesas.
-// - Interceptación de solicitudes y respuestas.
-// - Transformación de datos de solicitudes y respuestas.
-// - Cancelación/interrupción de solicitudes.
-// - Análisis/parsing automático de datos en formato JSON.
-// - Protección automática contra XSRF.  
-
-
-
 export async function fetchPopularMovies(genreId = null, page = 1) {
   let url = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&sort_by=popularity.desc&page=${page}&language=es-ES`;
   if (genreId) {
