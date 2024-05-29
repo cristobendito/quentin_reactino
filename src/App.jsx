@@ -2,8 +2,9 @@ import Navbar from './components/navbar/navbar.jsx';
 import React, { useState } from 'react';
 import './App.css';
 import Footer from './components/footer/footer';  
-
 import MovieList from './components/main/movieList';
+import './App.css'
+
   function App() {
     return (
       <div className="App">

@@ -80,7 +80,7 @@ const Navbar = () => {
               <i className="fas fa-heart"></i> Romance
             </a>
             <a href="/category/science-fiction">
-              <i className="fas fa-rocket"></i> Science Fiction
+              <i className="fas fa-rocket"></i> Sci-Fi
             </a>
             <a href="/category/tv-movie">
               <i className="fas fa-tv"></i> TV Movie
