@@ -5,7 +5,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 10px;
-    background: linear-gradient(to bottom, #000000, #f8d50c);
+    background: linear-gradient(to bottom, #282c34, #f8d50c);
   }
   
   .movies-container {

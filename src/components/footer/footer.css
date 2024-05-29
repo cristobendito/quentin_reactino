@@ -2,25 +2,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #282c34;
-    padding: 16px 20px; /* Padding para dispositivos móviles */
+
+    background: rgba(40, 44, 52, 0.9); /* color semi transparente */
+    padding: 16px 20px; /* Padding para móviles */
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
+    transition: background-color 0.3s ease; /* transición color fondo */
+}
+
+.footer:hover {
+    background: #282c34; /* normal color pasar ratón encima */
 }
 
 .footer .copyright {
     flex: 1;
     text-align: left;
     color: #cfcfcf;
-    margin-left: 40px; /* Ajusta el valor según sea necesario */
+    margin-left: 40px; 
 }
 
 .footer .creators {
     display: flex;
     flex: 1;
-    margin-right: 20px; /* Ajusta el margen derecho para dispositivos móviles */
+    margin-right: 20px; /* esto ajusta el margen derecho para móviles */
     justify-content: flex-end;
     align-items: center;
 }
@@ -39,14 +45,14 @@
 
 .footer .creators .creator .creator-avatar {
     border-radius: 50%;
-    width: 30px; /* Dispositivos móviles */
-    height: 30px; /* Dispositivos móviles */
+    width: 30px; /* móviles */
+    height: 30px; /* móviles */
     object-fit: cover;
     margin-bottom: 5px;
 }
 
 .footer .creators .creator-name {
-    font-size: 10px; /* Dispositivos móviles */
+    font-size: 10px; /* móviles */
     color: #9b9b9b;
 }
 
@@ -71,27 +77,27 @@
 
 @media (min-width: 768px) {
     .footer {
-        padding: 16px 32px; /* Para dispositivos de escritorio */
+        padding: 16px 32px; /* Para escritorio */
     }
 
     .footer .copyright {
-        margin-left: 60px; /* Ajusta el margen izquierdo para dispositivos de escritorio */
+        margin-left: 60px; /* Ajusta el margen izquierdo para escritorio */
     }
 
     .footer .creators {
-        margin-right: 55px; /* Dispositivos de escritorio */
+        margin-right: 55px; /* escritorio */
     }
 
     .footer .creators .creator {
-        margin-left: 10px; /* Dispositivos de escritorio */
+        margin-left: 10px; /* escritorio */
     }
 
     .footer .creators .creator-avatar {
-        width: 40px; /* Para dispositivos de escritorio */
-        height: 40px; /* Para dispositivos de escritorio */
+        width: 40px; /* Para escritorio */
+        height: 40px; /* Para escritorio */
     }
 
     .footer .creators .creator-name {
-        font-size: 12px; /* Para dispositivos de escritorio */
+        font-size: 12px; /* Para escritorio */
     }
 }
