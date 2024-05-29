@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #131313;
-    padding: 16px 20px; /* Ajusta el padding para dispositivos móviles */
+    background: #282c34;
+    padding: 16px 20px; /* Padding para dispositivos móviles */
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -14,6 +14,7 @@
     flex: 1;
     text-align: left;
     color: #cfcfcf;
+    margin-left: 40px; /* Ajusta el valor según sea necesario */
 }
 
 .footer .creators {
@@ -38,36 +39,59 @@
 
 .footer .creators .creator .creator-avatar {
     border-radius: 50%;
-    width: 30px; /* dispositivos móviles */
-    height: 30px; /* dispositivos móviles */
+    width: 30px; /* Dispositivos móviles */
+    height: 30px; /* Dispositivos móviles */
     object-fit: cover;
     margin-bottom: 5px;
 }
 
 .footer .creators .creator-name {
-    font-size: 10px; /* dispositivos móviles */
+    font-size: 10px; /* Dispositivos móviles */
     color: #9b9b9b;
+}
+
+.scroll-to-top {
+    background-color: #ebc000;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    position: absolute; /* Cambiado de fixed a absolute */
+    left: 20px; /* Alineado a la izquierda */
+    bottom: 20px; /* Alineado al fondo */
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: #777;
 }
 
 @media (min-width: 768px) {
     .footer {
-        padding: 16px 32px; /* para dispositivos de escritorio */
+        padding: 16px 32px; /* Para dispositivos de escritorio */
+    }
+
+    .footer .copyright {
+        margin-left: 60px; /* Ajusta el margen izquierdo para dispositivos de escritorio */
     }
 
     .footer .creators {
-        margin-right: 55px; /* dispositivos de escritorio */
+        margin-right: 55px; /* Dispositivos de escritorio */
     }
 
     .footer .creators .creator {
-        margin-left: 10px; /* dispositivos de escritorio */
+        margin-left: 10px; /* Dispositivos de escritorio */
     }
 
     .footer .creators .creator-avatar {
-        width: 40px; /* para dispositivos de escritorio */
-        height: 40px; /* para dispositivos de escritorio */
+        width: 40px; /* Para dispositivos de escritorio */
+        height: 40px; /* Para dispositivos de escritorio */
     }
 
     .footer .creators .creator-name {
-        font-size: 12px; /* para dispositivos de escritorio */
+        font-size: 12px; /* Para dispositivos de escritorio */
     }
 }
