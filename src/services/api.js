@@ -25,6 +25,7 @@ export async function fetchGenres() {
   }
 }
 
+
 export async function searchMovies(query) {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${query}&language=es-ES`;
   try {
@@ -35,6 +36,7 @@ export async function searchMovies(query) {
     throw error;
   }
 }
+
 export async function fetchMovieVideos(movieId) {
   const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${APIKEY}&language=es-ES`;
   try {
