@@ -47,7 +47,8 @@ export async function fetchMovieVideos(movieId) {
 }
 
 export async function fetchGenreMovie(genreId) {
-  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}?api_key=${APIKEY}&language=es-ES`;
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&api_key=${APIKEY}&language=es-ES`;
+  console.log(url)
   try {
     const response = await axios.get(url);
     return response.data.results;

@@ -5,11 +5,10 @@ import './navbar.css';
 
 console.log(genresIcons)
 
-const Navbar = () => {
+const Navbar = ({ setSelectGenres }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectgenres, setSelectGenres] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);

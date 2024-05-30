@@ -5,10 +5,11 @@ import Footer from './components/footer/footer';
 import './App.css';
 
   function App() {
+    const [selectGenres, setSelectGenres] = useState(null);
     return (
       <div className="App">
-        <Navbar />
-        <MovieList />
+        <Navbar setSelectGenres={setSelectGenres} />
+        <MovieList selectGenres={selectGenres} />
         <Footer />
       </div>
     );
