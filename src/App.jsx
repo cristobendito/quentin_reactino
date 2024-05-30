@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/navbar.jsx';
-import Main from './components/main/main.jsx';
+import MovieList from './components/main/movieList.jsx';
 import Footer from './components/footer/footer';  
 import './App.css';
 
   function App() {
+    const [selectGenres, setSelectGenres] = useState(null);
     return (
       <div className="App">
-        <Navbar />
-        <Main />
+        <Navbar setSelectGenres={setSelectGenres} />
+        <MovieList selectGenres={selectGenres} />
         <Footer />
       </div>
     );

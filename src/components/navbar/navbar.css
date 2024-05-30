@@ -1,7 +1,7 @@
 /* Navbar.css */
 :root {
   --primary-color: #333;/* Color primario */
-  --secundary-color: #e7c91f; /* Color secundario */
+  --secundary-color: #D6BA13; /* Color secundario */
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: var(--secundary-color);
   padding: 1rem;
   color: white;
   position: fixed;
@@ -87,30 +87,33 @@ body {
 }
 
 
-.dropdown-content a {
+.dropdown-content button {
+  width: 100%;
   color: black;
-  padding: 12px;
+  padding: 8px;
   text-decoration: none;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   border-radius: 4px;
+  align-content: center;
 }
 
-.dropdown-content a:hover {
+.dropdown-content button:hover {
+  border: 1px solid var(--secundary-color);
   border-radius: 8px 8px 0 0;
   background-color: #f1f1f1;
   font-size: 1.1rem;
   animation: shake 0.5s ease-in-out;
 }
 
-.dropdown-content a i {
-  color: var(--terciary-color);
+.dropdown-content button i {
+  color: var(--secundary-color);
   font-size: 1.5rem;
   transition: transform 0.5s ease;
   margin-right: 13px;
 }
 
-.dropdown-content a i:hover {
+.dropdown-content button i:hover {
   transform: rotate(360deg);
   font-size: 1.7rem;
 }
@@ -169,7 +172,7 @@ body {
     width: 100%;
     background-color: #333;
     position: absolute;
-    top: 64px;
+    top: 84px;
     left: 0;
   }
 
@@ -182,27 +185,31 @@ body {
   }
 
   .navbar-search  {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem
   }
 
   .navbar-link,
-  .navbar-button,
+  .navbar-button{
+    margin-bottom: 0.5rem;
+  }
+
   .navbar-dropdown {
-    margin: 1rem 0;
+    margin-top: 0.5rem;
   }
 
   .dropdown-content {
-    position: static;
-    box-shadow: none;
+    position: grid;
+    width: 100%;
+    /* box-shadow: none; */
     background-color: #333;
   }
 
-  .dropdown-content a {
+  /* .dropdown-content button {
     color: white;
-  }
+  } */
 
-  .dropdown-content a:hover {
+  /* .dropdown-content button:hover {
     background-color: #444;
-  }
+  } */
 
 }
