@@ -1,28 +1,27 @@
-import { useEffect, useState } from 'react';
-import { fetchPopularMovies, fetchGenres, fetchGenreMovie} from '../../services/api';
+import React, { useEffect, useState } from 'react';
+import { fetchPopularMovies, fetchGenres, fetchGenreMovie, searchMovies } from '../../services/api';
 import MovieCard from './movieCard';
 import './movieList.css';
 
-const MovieList = ({selectGenres}) => {
+const MovieList = ({ selectGenres, searchResults }) => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchLoading, setSearchLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        console.log("selectGenres", selectGenres)
         if (selectGenres) {
           const movieData = await fetchGenreMovie(selectGenres);
           setMovies(movieData);
-          console.log("movies", movieData);
-          return
+        } else {
+          const movieData = await fetchPopularMovies();
+          const genreData = await fetchGenres();
+          setMovies(movieData);
+          setGenres(genreData);
         }
-        const movieData = await fetchPopularMovies();
-        const genreData = await fetchGenres();
-        setMovies(movieData);
-        setGenres(genreData);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -33,7 +32,27 @@ const MovieList = ({selectGenres}) => {
     fetchData();
   }, [selectGenres]);
 
-  if (loading) {
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      if (searchResults && searchResults.length > 0) { // Check if search results are valid
+        setSearchLoading(true);
+        try {
+          const movieData = await searchMovies(searchResults);
+          setMovies(movieData);
+        } catch (error) {
+          console.error('Error searching movies:', error);
+        } finally {
+          setSearchLoading(false);
+        }
+      } else {
+        setMovies([]);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchResults]);
+
+  if (loading || searchLoading) {
     return <div>Loading...</div>;
   }
 
@@ -43,7 +62,7 @@ const MovieList = ({selectGenres}) => {
 
   return (
     <div className="movies-container">
-      {movies.map(movie => (
+      {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} genres={genres} />
       ))}
     </div>

@@ -6,10 +6,11 @@ import './App.css';
 
   function App() {
     const [selectGenres, setSelectGenres] = useState(null);
+    const [searchResults, setSearchResults] = useState("");
     return (
       <div className="App">
-        <Navbar setSelectGenres={setSelectGenres} />
-        <MovieList selectGenres={selectGenres} />
+        <Navbar setSelectGenres={setSelectGenres} setSearchResults={setSearchResults} />
+        <MovieList selectGenres={selectGenres} searchResults={searchResults} />
         <Footer />
       </div>
     );
