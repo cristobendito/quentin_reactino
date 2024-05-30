@@ -14,7 +14,6 @@ export async function fetchPopularMovies(genreId = null, page = 1) {
     throw error;
   }
 }
-
 export async function fetchGenres() {
   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${APIKEY}&language=es-ES`;
   try {
@@ -47,9 +46,21 @@ export async function fetchMovieVideos(movieId) {
   }
 }
 
+export async function fetchGenreMovie(genreId) {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}?api_key=${APIKEY}&language=es-ES`;
+  try {
+    const response = await axios.get(url);
+    return response.data.results;
+  } catch (error) {
+    console.error('Error fetching movie videos:', error);
+    throw error;
+  }
+}
+
 
 export default {
   fetchPopularMovies,
   fetchGenres,
   searchMovies,
-  fetchMovieVideos}
+  fetchMovieVideos,
+  fetchGenreMovie}
