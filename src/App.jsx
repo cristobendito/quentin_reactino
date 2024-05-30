@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/navbar.jsx';
-import MovieList from './components/main/movieList';
+import Main from './components/main/main.jsx';
 import Footer from './components/footer/footer';  
 import './App.css';
 
@@ -8,7 +8,7 @@ import './App.css';
     return (
       <div className="App">
         <Navbar />
-        <MovieList />
+        <Main />
         <Footer />
       </div>
     );
