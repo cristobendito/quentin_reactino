@@ -1,0 +1,21 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #282c34;
+}
+
+.navbar {
+  /* background-color: #282c34; */
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}

@@ -1,0 +1,103 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(40, 44, 52, 0.9); /* color semi transparente */
+    padding: 16px 20px; /* Padding para móviles */
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transition: background-color 0.3s ease; /* transición color fondo */
+}
+
+.footer:hover {
+    background: #282c34; /* normal color pasar ratón encima */
+}
+
+.footer .copyright {
+    flex: 1;
+    text-align: left;
+    color: #cfcfcf;
+    margin-left: 40px; 
+}
+
+.footer .creators {
+    display: flex;
+    flex: 1;
+    margin-right: 20px; /* esto ajusta el margen derecho para móviles */
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer .creators .creator {
+    margin-left: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.footer .creators .creator:hover {
+    transform: translateY(-3px); 
+}
+
+.footer .creators .creator .creator-avatar {
+    border-radius: 50%;
+    width: 30px; /* móviles */
+    height: 30px; /* móviles */
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.footer .creators .creator-name {
+    font-size: 10px; /* móviles */
+    color: #9b9b9b;
+}
+
+.scroll-to-top {
+    background-color: #ebc000;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    position: absolute; /* Cambiado de fixed a absolute */
+    left: 20px; /* Alineado a la izquierda */
+    bottom: 20px; /* Alineado al fondo */
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: #777;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 16px 32px; /* Para escritorio */
+    }
+
+    .footer .copyright {
+        margin-left: 60px; /* Ajusta el margen izquierdo para escritorio */
+    }
+
+    .footer .creators {
+        margin-right: 55px; /* escritorio */
+    }
+
+    .footer .creators .creator {
+        margin-left: 10px; /* escritorio */
+    }
+
+    .footer .creators .creator-avatar {
+        width: 40px; /* Para escritorio */
+        height: 40px; /* Para escritorio */
+    }
+
+    .footer .creators .creator-name {
+        font-size: 12px; /* Para escritorio */
+    }
+}

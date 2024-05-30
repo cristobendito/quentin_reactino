@@ -1,0 +1,23 @@
+.movie-card {
+    width: 290px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px auto;
+    background: linear-gradient(to bottom, #282c34, #f8d50c);
+  }
+  
+  .movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 84px; 
+    margin-bottom: 84px; 
+  }
+  
+  .movie-row {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  

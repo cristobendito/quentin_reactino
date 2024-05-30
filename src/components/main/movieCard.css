@@ -1,0 +1,27 @@
+
+.movie-card {
+    width: calc(25% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .movie-card h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .movie-card p {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
