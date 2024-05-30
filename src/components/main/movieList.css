@@ -12,7 +12,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 84px; /* ajustar a la altura de navbar */
+    margin-top: 84px; 
+    margin-bottom: 84px; 
   }
   
   .movie-row {
