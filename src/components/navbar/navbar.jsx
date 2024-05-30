@@ -9,6 +9,7 @@ const Navbar = ({ setSelectGenres ,setSearchResults }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSearchChange = async (e) => {
     const query = e.target.value;
@@ -21,15 +22,13 @@ const Navbar = ({ setSelectGenres ,setSearchResults }) => {
         console.error('Error searching movies:', error);
       }
     } else {
-      setSearchResults([]); // Clear search results when query is empty
+      setSearchResults([]); 
     }
   };
 
-  // const handleSearchSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Handle search submit (e.g., send search query to server or filter items)
-  //   console.log('Searching for:', searchQuery);
-  // };
+  const handleLoginToggle = () => {
+    setIsLoggedIn(!isLoggedIn); 
+  };
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 768);
@@ -66,8 +65,10 @@ const Navbar = ({ setSelectGenres ,setSearchResults }) => {
             ))}
           </div>
         </div>
-        <a href="/favorites" className="navbar-link">Favoritos</a>
-        <button className="navbar-button">Login/Registro</button>
+        <button href="/favorites" className="navbar-button">Favoritos</button>
+        <button className="navbar-button login" onClick={handleLoginToggle}>
+          {isLoggedIn ? 'Logout' : 'Login'}
+        </button>
         <div className="navbar-search">
           <input
             type="text"
