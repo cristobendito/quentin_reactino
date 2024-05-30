@@ -18,9 +18,9 @@ const MovieCard = ({ movie, genres }) => {
     if (!favorites.some(fav => fav.id === movie.id)) {
       favorites.push(movie);
       localStorage.setItem('favorites', JSON.stringify(favorites));
-      console.log(`Añadida ${movie.title} a favoritos`);
+      console.log(`Añadida "${movie.title}" a favoritos`);
     } else {
-      console.log(`${movie.title} ya está en favoritos`);
+      console.log(`"${movie.title}" ya está en favoritos`);
     }
   };
   
