@@ -37,7 +37,7 @@ const MovieCard = ({ movie, genres }) => {
       <h2>{movie.title}</h2>
       <p>{genreNames}</p>
       <ActionButton label="Mas info" onClick={toggleModal} className="info-button" />
-      <ActionButton label="Add to Favorites" onClick={handleFavorite} className="favorite-button" />
+      <ActionButton label="Añadir a Favorites" onClick={handleFavorite} className="favorite-button" />
 
 
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
