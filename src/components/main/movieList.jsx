@@ -4,7 +4,7 @@ import MovieCard from './movieCard';
 import FavoritesList from './favoritesList';
 import './movieList.css';
 
-const MovieList = () => {
+const MovieList = ({selectGenres}) => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,6 +14,13 @@ const MovieList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        console.log("selectGenres", selectGenres)
+        if (selectGenres) {
+          const movieData = await fetchGenreMovie(selectGenres);
+          setMovies(movieData);
+          console.log("movies", movieData);
+          return
+        }
         const movieData = await fetchPopularMovies();
         const genreData = await fetchGenres();
         setMovies(movieData);
@@ -26,7 +33,7 @@ const MovieList = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectGenres]);
 
   if (loading) {
     return <div>Loading...</div>;
