@@ -1,10 +1,10 @@
 .movie-card {
-    width: 300px;
+    width: 290px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin: 10px;
+    margin: 10px auto;
     background: linear-gradient(to bottom, #282c34, #f8d50c);
   }
   
@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 68px; /* ajustar a la altura de navbar */
+    margin-top: 84px; /* ajustar a la altura de navbar */
   }
   
   .movie-row {
