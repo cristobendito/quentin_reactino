@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/navbar.jsx';
-import MovieList from './components/main/movieList';
+import MovieList from './components/main/movieList.jsx';
 import Footer from './components/footer/footer';  
 import './App.css';
 
