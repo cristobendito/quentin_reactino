@@ -3,9 +3,10 @@ import { fetchPopularMovies, fetchGenres, fetchGenreMovie, searchMovies } from '
 import MovieCard from './movieCard';
 import './movieList.css';
 
-const MovieList = ({ selectGenres, searchResults }) => {
+
+const MovieList = ({ selectGenres, searchResults, genres}) => {
   const [movies, setMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
 
@@ -16,12 +17,11 @@ const MovieList = ({ selectGenres, searchResults }) => {
         if (selectGenres) {
           const movieData = await fetchGenreMovie(selectGenres);
           setMovies(movieData);
-        } else {
-          const movieData = await fetchPopularMovies();
-          const genreData = await fetchGenres();
-          setMovies(movieData);
-          setGenres(genreData);
+          return;
         }
+        const movieData = await fetchPopularMovies();
+        setMovies(movieData);
+        
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

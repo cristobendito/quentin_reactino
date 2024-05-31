@@ -9,13 +9,22 @@ const MovieCard = ({ movie, genres }) => {
   const [trailerUrl, setTrailerUrl] = useState('');
 
   const genreNames = movie.genre_ids.map(id => {
+    
     const genre = genres.find(g => g.id === id);
     return genre ? genre.name : '';
   }).join(', ');
 
   const handleFavorite = () => {
-    console.log(`Added ${movie.title} to favorites`);
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (!favorites.some(fav => fav.id === movie.id)) {
+      favorites.push(movie);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      console.log(`Añadida "${movie.title}" a favoritos`);
+    } else {
+      console.log(`"${movie.title}" ya está en favoritos`);
+    }
   };
+  
 
   const toggleModal = async () => {
     setIsModalOpen(!isModalOpen);
