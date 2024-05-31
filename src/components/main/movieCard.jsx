@@ -9,6 +9,7 @@ const MovieCard = ({ movie, genres }) => {
   const [trailerUrl, setTrailerUrl] = useState('');
 
   const genreNames = movie.genre_ids.map(id => {
+    
     const genre = genres.find(g => g.id === id);
     return genre ? genre.name : '';
   }).join(', ');

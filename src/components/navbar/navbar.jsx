@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { fetchGenres } from '../../services/api.js';
-import {genresIcons } from './navbar.js';
+import { genresIcons } from './navbar.js';
 import './navbar.css';
+import { FavoritesList } from '../main/favoritesList.jsx';
 
-console.log(genresIcons)
-
-const Navbar = ({ setSelectGenres }) => {
+const Navbar = ({ setSelectGenres, showFavorites }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +15,6 @@ const Navbar = ({ setSelectGenres }) => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Handle search submit (e.g., send search query to server or filter items)
     console.log('Searching for:', searchQuery);
   };
 
@@ -26,7 +24,7 @@ const Navbar = ({ setSelectGenres }) => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
-    handleResize(); // Check initial screen size
+    handleResize();
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -37,7 +35,7 @@ const Navbar = ({ setSelectGenres }) => {
     console.log('Selected genre ID:', genreId);
   };
 
- return (
+  return (
     <nav className="navbar">
       <div className="navbar-title">QUENTIN FILM</div>
       <div className={`navbar-links ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}>
@@ -47,7 +45,7 @@ const Navbar = ({ setSelectGenres }) => {
             {genresIcons.map((genre) => (
               <button
                 key={genre.id}
-                className={"dropdown-item"}
+                className="dropdown-item"
                 onClick={() => handleGenreClick(genre.id)}
               >
                 <i className={genre.className}></i> {genre.name}
@@ -55,7 +53,7 @@ const Navbar = ({ setSelectGenres }) => {
             ))}
           </div>
         </div>
-        <a href="/favorites" className="navbar-link">Favoritos</a>
+        <button className="navbar-link" onClick={showFavorites}>Favoritos</button>
         <button className="navbar-button">Login/Registro</button>
         <form className="navbar-search" onSubmit={handleSearchSubmit}>
           <input

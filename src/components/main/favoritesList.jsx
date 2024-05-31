@@ -23,4 +23,10 @@ const FavoritesList = ({ genres }) => {
   );
 };
 
+
+
+export {
+  FavoritesList,
+}
+
 export default FavoritesList;
