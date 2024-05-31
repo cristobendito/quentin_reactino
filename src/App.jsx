@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// App.js
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar/navbar.jsx';
 import MovieList from './components/main/movieList.jsx';
 import Footer from './components/footer/footer';  
@@ -12,35 +13,38 @@ function App() {
   const [genres, setGenres] = useState([]);
 
   const handleShowFavorites = () => {
-    setShowFavorites(true);
+    setShowFavorites(true); 
   };
 
-  // const handleShowMovies = () => {
-  //   setShowFavorites(false);
-  // };
-
-  const fetchGenres= async() => {
+  const fetchGenres = async() => {
     const genreData = await fetchGenres();
-        setGenres(genreData);
-  }
+    setGenres(genreData);
+  };
+
+  useEffect(() => {
+    fetchGenres();
+  }, []);
 
   return (
     <div className="App">
-      <Navbar setSelectGenres={setSelectGenres} showFavorites={handleShowFavorites} setSearchResults={setSearchResults}  />
+      <Navbar 
+        setSelectGenres={setSelectGenres}
+        showFavorites={handleShowFavorites} 
+        setSearchResults={setSearchResults} 
+        setShowFavorites={setShowFavorites}
+      />
       {showFavorites ? (
         <FavoritesList genres={genres} />
       ) : (
-        <MovieList selectGenres={selectGenres} genres={genres} searchResults={searchResults} />
+        <MovieList 
+          selectGenres={selectGenres} 
+          genres={genres} 
+          searchResults={searchResults} 
+        />
       )}
-      
-      
-
-
-
       <Footer />
     </div>
   );
 }
-
 
 export default App;

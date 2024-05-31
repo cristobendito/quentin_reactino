@@ -6,11 +6,12 @@ import { FavoritesList } from '../main/favoritesList.jsx';
 
 // console.log(genresIcons)
 
-const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites }) => {
+const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavorites}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isHome, setIsHome] = useState(true);
 
   const handleSearchChange = async (e) => {
     const query = e.target.value;
@@ -47,11 +48,24 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites }) => {
     setSelectGenres(genreId);
     console.log('Selected genre ID:', genreId);
   };
+  const handleFavoritesClick = () => {
+    setIsHome(false); 
+    // showFavorites(); 
+    setShowFavorites(true);
+  };
+
+  const handleHomeClick = () => {
+    setIsHome(true); 
+    // showFavorites(false); 
+    setShowFavorites(false);
+  
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-title">QUENTIN FILM</div>
       <div className={`navbar-links ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}>
+          {isHome && (
         <div className="navbar-dropdown">
           <button className="navbar-button">Categorías</button>
           <div className="dropdown-content">
@@ -66,19 +80,30 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites }) => {
             ))}
           </div>
         </div>
-        <button className="navbar-button" onClick={showFavorites}>Favoritos</button>
+  )}
+        {isHome ? ( 
+          <button className="navbar-button" onClick={handleFavoritesClick}>
+            Favoritos
+          </button>
+        ) : (
+          <button className="navbar-button" onClick={handleHomeClick}>
+            Inicio
+          </button>
+        )}
         <button className="navbar-button login" onClick={handleLoginToggle}>
           {isLoggedIn ? 'Logout' : 'Login'}
         </button>
-        <div className="navbar-search">
-          <input
-            type="text"
-            placeholder="Buscar..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="navbar-search-input"
-          />
-        </div>
+        {isHome && ( 
+          <div className="navbar-search">
+            <input
+              type="text"
+              placeholder="Buscar..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="navbar-search-input"
+            />
+          </div>
+        )}
       </div>
       <button className="navbar-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         &#9776;
