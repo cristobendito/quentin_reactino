@@ -6,6 +6,7 @@ import FavoritesList from './components/main/favoritesList.jsx';
 import './App.css';
 import { fetchGenres } from './services/api'; 
 
+
 function App() {
   const [selectGenres, setSelectGenres] = useState(null);
   const [searchResults, setSearchResults] = useState("");

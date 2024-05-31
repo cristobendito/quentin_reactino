@@ -13,7 +13,7 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
     try {
       const movieData = await fetchPopularMovies();
       setMovies(movieData);
-      setIsSearching(false); // Встановлюємо isSearching в false, оскільки показуємо популярні фільми
+      setIsSearching(false); 
     } catch (error) {
       console.error('Error fetching popular movies:', error);
     } finally {
@@ -45,9 +45,9 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
     const fetchSearchResults = async () => {
       if (searchResults && searchResults.length > 0) {
         setMovies(searchResults);
-        setIsSearching(true); // Встановлюємо isSearching в true, оскільки є результати пошуку
+        setIsSearching(true); 
       } else {
-        await fetchPopular(); // При відсутності результатів пошуку показуємо популярні фільми
+        await fetchPopular(); 
       }
     };
 
