@@ -66,7 +66,7 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites }) => {
             ))}
           </div>
         </div>
-        <button className="navbar-link" onClick={showFavorites}>Favoritos</button>
+        <button className="navbar-button" onClick={showFavorites}>Favoritos</button>
         <button className="navbar-button login" onClick={handleLoginToggle}>
           {isLoggedIn ? 'Logout' : 'Login'}
         </button>

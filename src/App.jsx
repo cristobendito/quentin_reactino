@@ -7,6 +7,7 @@ import './App.css';
 
 function App() {
   const [selectGenres, setSelectGenres] = useState(null);
+  const [searchResults, setSearchResults] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
   const [genres, setGenres] = useState([]);
 
@@ -25,12 +26,17 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setSelectGenres={setSelectGenres} showFavorites={handleShowFavorites} />
+      <Navbar setSelectGenres={setSelectGenres} showFavorites={handleShowFavorites} setSearchResults={setSearchResults}  />
       {showFavorites ? (
         <FavoritesList genres={genres} />
       ) : (
-        <MovieList selectGenres={selectGenres} genres={genres} />
+        <MovieList selectGenres={selectGenres} genres={genres} searchResults={searchResults} />
       )}
+      
+      
+
+
+
       <Footer />
     </div>
   );
