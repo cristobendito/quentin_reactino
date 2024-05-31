@@ -10,23 +10,33 @@ const FavoritesList = ({ genres }) => {
     setFavorites(storedFavorites);
   }, []);
 
+  const handleRemoveFavorite = (movieId) => {
+    const updatedFavorites = favorites.filter(movie => movie.id !== movieId);
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
   if (favorites.length === 0) {
-    return <div>No favorites found.</div>;
+    return (
+      <div className="no-favorites-container">
+       
+        <img 
+          src="../../../public/694e3d940cd7.jpeg" 
+          alt="No favorites found"
+          className="no-favorites-image"
+        />
+         <h2 className="no-favorites-text">No se ha encontrado nada en su favorito </h2>
+      </div>
+    );
   }
 
   return (
     <div className="favorites-container">
       {favorites.map(movie => (
-        <MovieCard key={movie.id} movie={movie} genres={genres} />
+        <MovieCard key={movie.id} movie={movie} genres={genres} onRemoveFavorite={handleRemoveFavorite} />
       ))}
     </div>
   );
 };
-
-
-
-export {
-  FavoritesList,
-}
 
 export default FavoritesList;

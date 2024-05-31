@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchGenres , searchMovies} from '../../services/api.js';
 import {genresIcons } from './navbar.js';
 import './navbar.css';
-import { FavoritesList } from '../main/favoritesList.jsx';
 
-// console.log(genresIcons)
 
 const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavorites}) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,8 +21,11 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavo
       } catch (error) {
         console.error('Error searching movies:', error);
       }
-    } else {
-      setSearchResults([]); 
+      
+    } 
+    else {
+      setSearchResults([]);
+      setIsHome(true); 
     }
   };
 
@@ -46,17 +47,14 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavo
 
   const handleGenreClick = (genreId) => {
     setSelectGenres(genreId);
-    console.log('Selected genre ID:', genreId);
   };
   const handleFavoritesClick = () => {
     setIsHome(false); 
-    // showFavorites(); 
     setShowFavorites(true);
   };
 
   const handleHomeClick = () => {
     setIsHome(true); 
-    // showFavorites(false); 
     setShowFavorites(false);
   
   };

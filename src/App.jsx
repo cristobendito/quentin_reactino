@@ -1,29 +1,34 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar/navbar.jsx';
 import MovieList from './components/main/movieList.jsx';
 import Footer from './components/footer/footer';  
 import FavoritesList from './components/main/favoritesList.jsx';
 import './App.css';
+import { fetchGenres } from './services/api'; 
+
 
 function App() {
   const [selectGenres, setSelectGenres] = useState(null);
   const [searchResults, setSearchResults] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
-  const [genres, setGenres] = useState([]);
+  const [genresData, setGenresData] = useState([]);
 
   const handleShowFavorites = () => {
     setShowFavorites(true); 
   };
 
-  const fetchGenres = async() => {
-    const genreData = await fetchGenres();
-    setGenres(genreData);
+  const fetchGenresData = async() => { 
+    try {
+      const genreData = await fetchGenres();
+      setGenresData(genreData);
+    } catch (error) {
+      console.error('Error fetching genres:', error);
+    }
   };
 
   useEffect(() => {
-    fetchGenres();
-  }, []);
+    fetchGenresData(); 
+  }, []); 
 
   return (
     <div className="App">
@@ -34,11 +39,11 @@ function App() {
         setShowFavorites={setShowFavorites}
       />
       {showFavorites ? (
-        <FavoritesList genres={genres} />
+        <FavoritesList genres={genresData} />
       ) : (
         <MovieList 
           selectGenres={selectGenres} 
-          genres={genres} 
+          genres={genresData} 
           searchResults={searchResults} 
         />
       )}
