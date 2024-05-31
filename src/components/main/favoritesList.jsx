@@ -17,7 +17,17 @@ const FavoritesList = ({ genres }) => {
   };
 
   if (favorites.length === 0) {
-    return <div>No favorites found.</div>;
+    return (
+      <div className="no-favorites-container">
+       
+        <img 
+          src="../../../public/694e3d940cd7.jpeg" 
+          alt="No favorites found"
+          className="no-favorites-image"
+        />
+         <h2 className="no-favorites-text">No se ha encontrado nada en su favorito </h2>
+      </div>
+    );
   }
 
   return (
