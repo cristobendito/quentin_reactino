@@ -1,6 +1,6 @@
 
 .movie-card {
-    width: calc(25% - 20px);
+    /* width: calc(25% - 20px); */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -10,9 +10,12 @@
   }
   
   .movie-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+    width: 300px; /* Встановіть бажану ширину */
+    height: 450px; /* Встановіть бажану висоту */
+    object-fit: cover; /* Застосуйте обітку для заповнення контейнера */
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
   }
   
   .movie-card h2 {
