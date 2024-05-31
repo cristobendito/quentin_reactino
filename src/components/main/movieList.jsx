@@ -34,11 +34,11 @@ const MovieList = ({ selectGenres, searchResults }) => {
 
   useEffect(() => {
     const fetchSearchResults = async () => {
-      if (searchResults && searchResults.length > 0) { // Check if search results are valid
+      if (searchResults && searchResults.length > 0) {
         setSearchLoading(true);
         try {
-          const movieData = await searchMovies(searchResults);
-          setMovies(movieData);
+          // const movieData = await searchMovies(searchResults);
+          setMovies(searchResults);
         } catch (error) {
           console.error('Error searching movies:', error);
         } finally {
