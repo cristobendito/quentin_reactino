@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPopularMovies, fetchGenres } from '../../services/api';
+import { fetchPopularMovies, fetchGenres, fetchGenreMovie, searchMovies } from '../../services/api';
 import MovieCard from './movieCard';
 import './movieList.css';
 
-const MovieList = ({ selectGenres, genres }) => {
+
+const MovieList = ({ selectGenres, searchResults, genres}) => {
   const [movies, setMovies] = useState([]);
 
   const [loading, setLoading] = useState(true);
+  const [searchLoading, setSearchLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +32,27 @@ const MovieList = ({ selectGenres, genres }) => {
     fetchData();
   }, [selectGenres]);
 
-  if (loading) {
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      if (searchResults && searchResults.length > 0) {
+        setSearchLoading(true);
+        try {
+          // const movieData = await searchMovies(searchResults);
+          setMovies(searchResults);
+        } catch (error) {
+          console.error('Error searching movies:', error);
+        } finally {
+          setSearchLoading(false);
+        }
+      } else {
+        setMovies([]);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchResults]);
+
+  if (loading || searchLoading) {
     return <div>Loading...</div>;
   }
 

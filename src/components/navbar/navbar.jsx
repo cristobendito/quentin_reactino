@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { fetchGenres } from '../../services/api.js';
-import { genresIcons } from './navbar.js';
+import { fetchGenres , searchMovies} from '../../services/api.js';
+import {genresIcons } from './navbar.js';
 import './navbar.css';
 import { FavoritesList } from '../main/favoritesList.jsx';
 
-const Navbar = ({ setSelectGenres, showFavorites }) => {
+// console.log(genresIcons)
+
+const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+  const handleSearchChange = async (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    if (query) {
+      try {
+        const results = await searchMovies(query);
+        setSearchResults(results);
+      } catch (error) {
+        console.error('Error searching movies:', error);
+      }
+    } else {
+      setSearchResults([]); 
+    }
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log('Searching for:', searchQuery);
+  const handleLoginToggle = () => {
+    setIsLoggedIn(!isLoggedIn); 
   };
 
   const handleResize = () => {
@@ -54,8 +67,10 @@ const Navbar = ({ setSelectGenres, showFavorites }) => {
           </div>
         </div>
         <button className="navbar-link" onClick={showFavorites}>Favoritos</button>
-        <button className="navbar-button">Login/Registro</button>
-        <form className="navbar-search" onSubmit={handleSearchSubmit}>
+        <button className="navbar-button login" onClick={handleLoginToggle}>
+          {isLoggedIn ? 'Logout' : 'Login'}
+        </button>
+        <div className="navbar-search">
           <input
             type="text"
             placeholder="Buscar..."
@@ -63,8 +78,7 @@ const Navbar = ({ setSelectGenres, showFavorites }) => {
             onChange={handleSearchChange}
             className="navbar-search-input"
           />
-          <button type="submit" className="navbar-search-button">Buscar</button>
-        </form>
+        </div>
       </div>
       <button className="navbar-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         &#9776;

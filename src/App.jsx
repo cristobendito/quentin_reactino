@@ -34,5 +34,16 @@ function App() {
     </div>
   );
 }
+  function App() {
+    const [selectGenres, setSelectGenres] = useState(null);
+    const [searchResults, setSearchResults] = useState("");
+    return (
+      <div className="App">
+        <Navbar setSelectGenres={setSelectGenres} setSearchResults={setSearchResults} />
+        <MovieList selectGenres={selectGenres} searchResults={searchResults} />
+        <Footer />
+      </div>
+    );
+  }
 
 export default App;
