@@ -88,13 +88,13 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
     return <div>Loading...</div>;
   }
 
-  if (movies.length === 0 && isSearching) {
-    return (
-      <div>
-        <img src="../../../public/quentin.jpeg" alt="No movies found" />
-      </div>
-    );
-  }
+  // if (movies.length === 0 && isSearching) {
+  //   return (
+  //     <div>
+  //       <img src="../../../public/quentin.jpeg" alt="No movies found" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="movies-container">
