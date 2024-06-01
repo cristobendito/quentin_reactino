@@ -9,6 +9,9 @@ body {
   padding-top: 64px; /* Espacio para el navbar fijo */
 }
 
+.navbar-button.login{
+  margin-right: 40px;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
