@@ -16,8 +16,8 @@
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
-    width: 100%;
-    max-height: 90%;
+    width: 85%;
+    max-height: 70%;
     overflow-y: auto;
   }
   
@@ -30,4 +30,7 @@
     right: 10px;
     cursor: pointer;
   }
-  
+
+.modal-content iframe {
+  width: 100%
+}  
