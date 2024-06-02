@@ -9,7 +9,6 @@ function App() {
   const [selectGenres, setSelectGenres] = useState(null);
   const [showFavorites, setShowFavorites] = useState(false);
   const [genres, setGenres] = useState([]);
-
   const handleShowFavorites = () => {
     setShowFavorites(true);
   };
@@ -18,8 +17,8 @@ function App() {
     setShowFavorites(false);
   };
   const fetchGenres= async() => {
-    const genreData = await fetchGenres();
-        setGenres(genreData);
+  const genreData = await fetchGenres();
+    setGenres(genreData);
   }
 
   return (
@@ -34,16 +33,5 @@ function App() {
     </div>
   );
 }
-  function App() {
-    const [selectGenres, setSelectGenres] = useState(null);
-    const [searchResults, setSearchResults] = useState("");
-    return (
-      <div className="App">
-        <Navbar setSelectGenres={setSelectGenres} setSearchResults={setSearchResults} />
-        <MovieList selectGenres={selectGenres} searchResults={searchResults} />
-        <Footer />
-      </div>
-    );
-  }
 
 export default App;

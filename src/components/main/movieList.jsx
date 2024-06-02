@@ -6,7 +6,6 @@ import './movieList.css';
 
 const MovieList = ({ selectGenres, searchResults, genres}) => {
   const [movies, setMovies] = useState([]);
-
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
 
