@@ -83,6 +83,7 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
+  left: -15px;
   background-color: #f9f9f9;
   min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -213,10 +214,13 @@ body {
   }
 
   .dropdown-content {
-    position: grid;
-    width: 100%;
-    /* box-shadow: none; */
+    position: absolute;
+    left: -32px;
+    width: 200px;
+    margin: auto;
     background-color: #333;
+    max-height: 400px; /* Altura máxima del contenido en modo móvil */
+    overflow-y: auto; /* Añade scroll si el contenido excede la altura máxima */
   }
 
   /* .dropdown-content button {

@@ -7,19 +7,39 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
+  const [page, setPage] = useState(2);
 
   const fetchPopular = async () => {
     setLoading(true);
     try {
       const movieData = await fetchPopularMovies();
       setMovies(movieData);
-      setIsSearching(false); // Встановлюємо isSearching в false, оскільки показуємо популярні фільми
+      setIsSearching(false); 
     } catch (error) {
       console.error('Error fetching popular movies:', error);
     } finally {
       setLoading(false);
     }
   };
+//prueba de scroll(scroll infinito)
+  useEffect(() => {
+    const handleScroll = async() => {
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight-1) {
+        setPage(page => page + 1);
+        const data = await fetchPopularMovies(page)
+        setMovies((movieData) => {
+          const existingMovieIds = new Set(movieData.map(movie => movie.id));
+          const newMovies = data.filter(movie => !existingMovieIds.has(movie.id));
+          return [...movieData, ...newMovies];
+        });
+
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [page]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,9 +65,9 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
     const fetchSearchResults = async () => {
       if (searchResults && searchResults.length > 0) {
         setMovies(searchResults);
-        setIsSearching(true); // Встановлюємо isSearching в true, оскільки є результати пошуку
+        setIsSearching(true); 
       } else {
-        await fetchPopular(); // При відсутності результатів пошуку показуємо популярні фільми
+        await fetchPopular(); 
       }
     };
 

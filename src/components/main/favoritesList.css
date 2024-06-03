@@ -1,7 +1,31 @@
 .favorites-container {
+  margin-top: 170px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-content: center;
+  }
+
+  .no-favorites-container {
+    margin-top: 170px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    align-content: center;
+    }
+
+  .no-favorites-image {
+    display: flex;
+    justify-items: center;
+    width: 90%;
+  
+  } 
+
+  .no-favorites-text {
+    text-align: center;
+    font-size: 20px;
+    color: white;
   }
   
