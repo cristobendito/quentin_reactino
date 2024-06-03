@@ -67,15 +67,15 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
         setMovies(searchResults);
         setIsSearching(true); 
       } 
-      // else if (!searchResults || searchResults.length === 0) {
-      //   return (
+      else if (searchResults===0) {
+        return (
          
-      //     <div>
-      //       <h2>No movies found</h2>
-      //       <img src="../../../public/quentin.jpeg" alt="No movies found" />
-      //     </div>
-      //   );
-      // }
+          <div>
+            <h2>No movies found</h2>
+            <img src="/quentin.jpeg" alt="No movies found" />
+          </div>
+        );
+      }
       else {
         await fetchPopular(); 
       }
