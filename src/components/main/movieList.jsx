@@ -1,13 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPopularMovies, fetchGenres, fetchGenreMovie, searchMovies } from '../../services/api';
+import { fetchPopularMovies, fetchGenreMovie, searchMovies } from '../../services/api';
 import MovieCard from './movieCard';
 import './movieList.css';
 
-
-const MovieList = ({ selectGenres, searchResults, genres}) => {
+const MovieList = ({ selectGenres, searchResults, genres }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchLoading, setSearchLoading] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [page, setPage] = useState(2);
+
+  const fetchPopular = async () => {
+    setLoading(true);
+    try {
+      const movieData = await fetchPopularMovies();
+      setMovies(movieData);
+      setIsSearching(false); 
+    } catch (error) {
+      console.error('Error fetching popular movies:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+//prueba de scroll(scroll infinito)
+  useEffect(() => {
+    const handleScroll = async() => {
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight-1) {
+        setPage(page => page + 1);
+        const data = await fetchPopularMovies(page)
+        setMovies((movieData) => {
+          const existingMovieIds = new Set(movieData.map(movie => movie.id));
+          const newMovies = data.filter(movie => !existingMovieIds.has(movie.id));
+          return [...movieData, ...newMovies];
+        });
+
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [page]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,11 +48,9 @@ const MovieList = ({ selectGenres, searchResults, genres}) => {
         if (selectGenres) {
           const movieData = await fetchGenreMovie(selectGenres);
           setMovies(movieData);
-          return;
+        } else {
+          await fetchPopular();
         }
-        const movieData = await fetchPopularMovies();
-        setMovies(movieData);
-        
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -34,29 +64,26 @@ const MovieList = ({ selectGenres, searchResults, genres}) => {
   useEffect(() => {
     const fetchSearchResults = async () => {
       if (searchResults && searchResults.length > 0) {
-        setSearchLoading(true);
-        try {
-          // const movieData = await searchMovies(searchResults);
-          setMovies(searchResults);
-        } catch (error) {
-          console.error('Error searching movies:', error);
-        } finally {
-          setSearchLoading(false);
-        }
+        setMovies(searchResults);
+        setIsSearching(true); 
       } else {
-        setMovies([]);
+        await fetchPopular(); 
       }
     };
 
     fetchSearchResults();
   }, [searchResults]);
 
-  if (loading || searchLoading) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (movies.length === 0) {
-    return <div>No movies found.</div>;
+  if (movies.length === 0 && isSearching) {
+    return (
+      <div>
+        <img src="../../../public/quentin.jpeg" alt="No movies found" />
+      </div>
+    );
   }
 
   return (

@@ -10,9 +10,9 @@
   }
   
   .movie-card img {
-    width: 300px; /* Встановіть бажану ширину */
-    height: 450px; /* Встановіть бажану висоту */
-    object-fit: cover; /* Застосуйте обітку для заповнення контейнера */
+    width: 290px; 
+    height: 400px; 
+    object-fit: cover; 
     border-radius: 8px;
     display: block;
     margin: 0 auto;

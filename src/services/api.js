@@ -1,7 +1,7 @@
 import axios from "axios";
 import {APIKEY} from "./apiKey";
 
-export async function fetchPopularMovies(genreId = null, page = 1) {
+export async function fetchPopularMovies(page = 1,genreId = null) {
   let url = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&sort_by=popularity.desc&page=${page}&language=es-ES`;
   if (genreId) {
     url += `&with_genres=${genreId}`;
