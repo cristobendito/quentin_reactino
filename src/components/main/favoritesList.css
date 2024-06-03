@@ -1,5 +1,5 @@
 .favorites-container {
-  margin-top: 170px;
+  margin-top: 85px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -8,7 +8,7 @@
   }
 
   .no-favorites-container {
-    margin-top: 170px;
+    margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;

@@ -66,7 +66,17 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
       if (searchResults && searchResults.length > 0) {
         setMovies(searchResults);
         setIsSearching(true); 
-      } else {
+      } 
+      else if (searchResults===0) {
+        return (
+         
+          <div>
+            <h2>No movies found</h2>
+            <img src="/quentin.jpeg" alt="No movies found" />
+          </div>
+        );
+      }
+      else {
         await fetchPopular(); 
       }
     };
@@ -78,13 +88,13 @@ const MovieList = ({ selectGenres, searchResults, genres }) => {
     return <div>Loading...</div>;
   }
 
-  if (movies.length === 0 && isSearching) {
-    return (
-      <div>
-        <img src="../../../public/quentin.jpeg" alt="No movies found" />
-      </div>
-    );
-  }
+  // if (movies.length === 0 && isSearching) {
+  //   return (
+  //     <div>
+  //       <img src="../../../public/quentin.jpeg" alt="No movies found" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="movies-container">
