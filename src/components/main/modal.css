@@ -12,13 +12,15 @@
   
   .modal-content {
     position: relative; 
-    background: white;
+    background: linear-gradient(to bottom, #f8d50c, #fff1b0);
+    /* background-color: white; */
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
     width: 85%;
     max-height: 70%;
     overflow-y: auto;
+    /* border: 10px solid #ffffff; */
   }
   
   .close-button {
