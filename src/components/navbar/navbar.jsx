@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { fetchGenres , searchMovies} from '../../services/api.js';
-import {genresIcons } from './navbar.js';
+import {getGenresIcons } from './navbar.js';
 import './navbar.css';
 
 
-const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavorites}) => {
+const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavorites, genres}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = ({ setSelectGenres ,setSearchResults, showFavorites , setShowFavo
     setShowFavorites(false);
   
   };
-
+  const genresIcons = getGenresIcons(genres);
   return (
     <nav className="navbar">
       <div className="navbar-title">QUENTIN FILM</div>

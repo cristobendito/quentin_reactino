@@ -1,7 +1,5 @@
 import { fetchGenres } from '../../services/api.js';
 
-const genres = await fetchGenres();
-
 const iconGenres = [
 "fas fa-fist-raised",
 "fas fa-hiking",
@@ -25,11 +23,13 @@ const iconGenres = [
 ]
 //crear un constante que agregue en orden el icono en className 
 
-const genresIcons = genres.map((genre, index) => {
-    return { id: genre.id, name: genre.name, className: iconGenres[index] };
-})
+function getGenresIcons(genres){
+    return genres.map((genre, index) => {
+        return { id: genre.id, name: genre.name, className: iconGenres[index] };
+    })
+}    
 
 
 
 
-export {genresIcons};
+export {getGenresIcons};
