@@ -21,7 +21,7 @@ const FavoritesList = ({ genres }) => {
       <div className="no-favorites-container">
        
         <img 
-          src="../../../public/694e3d940cd7.jpeg" 
+          src="/694e3d940cd7.jpeg" 
           alt="No favorites found"
           className="no-favorites-image"
         />

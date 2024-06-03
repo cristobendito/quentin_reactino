@@ -1,13 +1,17 @@
 import React from 'react';
 import './footer.css';
+import imageAna from '../../assets/88847909.jpg';
+import imageManu from '../../assets/138526079.jpg';
+import imageBelen from '../../assets/153951441.jpg';
+import imageMarisa from '../../assets/maxresdefault_dfdd.jpg';
 
 const Footer = () => {
     const year = new Date().getFullYear();
     const creators = [
-        { id: 1, name: 'Anna', avatar: '/src/assets/88847909.jpg', url: 'https://github.com/annamelya2021' },
-        { id: 2, name: 'Manu', avatar: 'src/assets/138526079.jpg', url: 'https://github.com/Manudies' },
-        { id: 3, name: 'Belen', avatar: 'src/assets/153951441.jpg', url: 'https://github.com/cristobendito' },
-        { id: 4, name: 'Marisa', avatar: 'src/assets/maxresdefault_dfdd.jpg', url: 'https://url_de_la_pagina_3' }
+        { id: 1, name: 'Anna', avatar: imageAna, url: 'https://github.com/annamelya2021' },
+        { id: 2, name: 'Manu', avatar: imageManu, url: 'https://github.com/Manudies' },
+        { id: 3, name: 'Belen', avatar: imageBelen, url: 'https://github.com/cristobendito' },
+        { id: 4, name: 'Marisa', avatar: imageMarisa, url: 'https://url_de_la_pagina_3' }
     ];
 
     const scrollToTop = () => {
