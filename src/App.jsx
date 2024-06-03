@@ -37,6 +37,7 @@ function App() {
         showFavorites={handleShowFavorites} 
         setSearchResults={setSearchResults} 
         setShowFavorites={setShowFavorites}
+        genres={genresData}
       />
       {showFavorites ? (
         <FavoritesList genres={genresData} />
